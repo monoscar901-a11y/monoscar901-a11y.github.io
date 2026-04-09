@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Invitación de Boda | Martha & Ramiro</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fffaf5 0%, #fef1e6 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: #3b2b2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1.8rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 245, 0.92);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 215, 190, 0.6);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .hero .subtitulo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: #b9775e;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #a5513a;
+            margin: 0.5rem 0;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .date {
+            font-size: 1.3rem;
+            background: #fff1e8;
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #7c4a38;
+            box-shadow: inset 0 1px 3px #ffe0cf, 0 5px 10px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #a5513a;
+            margin-bottom: 1.8rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: #ecc9b5;
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .photo-card {
+            background: #fffdf9;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #ffe2d4;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .photo-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .photo-caption {
+            padding: 1rem 0.8rem;
+            font-weight: 600;
+            background: white;
+            color: #9b5e48;
+            text-align: center;
+            border-top: 1px solid #ffe1d0;
+        }
+
+        .map-wrapper {
+            margin: 1.5rem 0 1rem;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            display: block;
+        }
+
+        .address {
+            text-align: center;
+            background: #fff3ec;
+            padding: 1rem;
+            border-radius: 50px;
+            margin-top: 1rem;
+            font-weight: 500;
+            color: #664536;
+        }
+
+        .address i {
+            color: #c27658;
+            margin-right: 8px;
+        }
+
+        .confirm-section {
+            text-align: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #c1815e, #a65c3f);
+            border: none;
+            padding: 1rem 2.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 12px 20px -10px rgba(166, 92, 63, 0.4);
+            transition: all 0.25s ease;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .btn-confirm:hover {
+            background: linear-gradient(135deg, #b26d4b, #954e33);
+            transform: scale(1.02);
+            box-shadow: 0 18px 28px -12px rgba(166, 92, 63, 0.5);
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .responsive-iframe {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            border: none;
+            background: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.85rem;
+            color: #b48a72;
+            border-top: 1px solid #f6e0d2;
+            margin-top: 1rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-container {
+            background: #fffef7;
+            max-width: 480px;
+            width: 90%;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border: 1px solid #fadbcb;
+            transform: scale(0.95);
+            transition: transform 0.2s;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .modal-container h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            color: #a5513a;
+            margin-bottom: 0.5rem;
+        }
+        .modal-container p {
+            color: #7b5a4a;
+            margin-bottom: 1.8rem;
+        }
+        .modal-form input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            margin: 0.7rem 0;
+            border: 1.5px solid #f3d5c4;
+            border-radius: 60px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            background: #fffaf5;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-modal-submit {
+            background: #c1815e;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-modal-cancel {
+            background: #ede0d8;
+            color: #7a4d38;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .close-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: #b48a72;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem 1.2rem; }
+            .hero h1 { font-size: 2.3rem; }
+            .section-title { font-size: 1.7rem; }
+            .btn-confirm { padding: 0.8rem 2rem; font-size: 1.1rem; }
+            .map-wrapper iframe { height: 260px; }
+            .responsive-iframe { height: 600px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.9rem; }
+            .responsive-iframe { height: 550px; }
+        }
+
+        /* PANTALLA INICIAL */
+#pantalla-inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(145deg, #4b2c5e, #2b1a38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    z-index: 99999;
+    text-align: center;
+}
+
+.boton-entrada {
+    background: gold;
+    color: #4b2c5e;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.boton-entrada:hover {
+    transform: scale(1.1);
+    background: #ffd700;
+}
+    </style>
+</head>
+<body>
+<!-- PANTALLA DE ENTRADA -->
+<div id="pantalla-inicio">
+    <h1 style="font-family: 'Playfair Display', serif;">Martha & Ramiro</h1>
+    <p>Nuestra Boda</p>
+    <button class="boton-entrada" onclick="entrarInvitacion()">
+        💖 Entrar  💖
+    </button>
+</div>
+<audio id="musica" loop>
+  <source src="song.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  window.addEventListener('click', () => {
+    const audio = document.getElementById('musica');
+    audio.muted = false;
+    audio.play();
+  });
+</script>
+
+<div class="container">
+    <!-- SECCIÓN HERO -->
+    <div class="card hero">
+        <div class="subtitulo">Nos casamos</div>
+        <h1>Martha <span style="font-weight:400">&</span> Ramiro</h1>
+        <div class="date">
+            <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 15 de Agosto, 2026
+            <span style="margin: 0 8px">|</span>
+            <i class="fas fa-clock"></i> Misa 5:00 PM
+            <span style="margin: 0 8px">|</span>
+            <i class="fas fa-clock"></i> Salón 7:00 PM
+        </div>
+ 
+                <p style="margin-top: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; color: #865d48;">
+            <i class="fas fa-map-marker-alt"></i> Parroquia Nuestro Señor Jesucristo Rey
+        </p>
+        <p style="margin-top: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; color: #865d48;">
+            <i class="fas fa-map-marker-alt"></i> Salón Monarca
+        </p>
+ 
+    </div>
+
+    <!-- GALERÍA DE FOTOS DE LOS NOVIOS -->
+    <div class="card">
+        <h2 class="section-title"><i class="fas fa-heart"></i> Nuestros momentos</h2>
+        <div class="photos-grid">
+            <div class="photo-card">
+                <img src="img1.jpg" 
+                     alt="Martha y Ramiro juntos">
+                <div class="photo-caption">✨ Juntos por siempre ✨</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://placehold.co/600x600/fce4d8/b45a3a?text=Amor+infinito+❤️&font=montserrat" 
+                     alt="Martha y Ramiro enamorados">
+                <div class="photo-caption">💞 Nuestro amor 💞</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://placehold.co/600x600/f5dfd2/9b543a?text=Felicidad+sin+medida&font=montserrat" 
+                     alt="Martha y Ramiro felices">
+                <div class="photo-caption">🌸 Día de alegría 🌸</div>
+            </div>
+        </div>
+  
+    </div>
+
+    <!-- MAPA DE UBICACIÓN MISA -->
+    <div class="card">
+        
+
+           <div class="card">
+        <h2 class="section-title"><i class="fas fa-map-marked-alt"></i>Lugar de la misa  </h2>
+        <div class="map-wrapper">
+            <iframe 
+                loading="lazy"
+                title="mapa boda"
+                src="https://www.google.com/maps?q=20.084107,-98.3772522&output=embed">
+            </iframe>
+        </div>
+        <div class="address">
+            <i class="fas fa-location-dot"></i> <strong>Parroquia Nuestro Señor Jesucristo Rey"</strong> — Av del Ferrocarril 307, Felipe Ángeles, 43640 Tulancingo, Hgo.<br>
+            <span style="font-size: 0.85rem;">Referencia: Enfrente del parque recreativo "El Caracol"</span>
+        </div>
+ 
+    </div>
+ 
+    </div>
+    <!-- MAPA DE UBICACIÓN -->
+    <div class="card">
+        <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> ¿Dónde celebrarnos?</h2>
+        <div class="map-wrapper">
+            <iframe 
+                loading="lazy"
+                title="mapa boda"
+                src="https://www.google.com/maps?q=20.0738125,-98.3980625&output=embed">
+            </iframe>
+        </div>
+        <div class="address">
+            <i class="fas fa-location-dot"></i> <strong>MONARCA SALON DE EVENTOS</strong> —  San Nicolás El Grande, 43648 Fraccionamiento del Magisterio Tulancingo, Hgo.<br>
+            
+        </div>
+
+    <!-- BOTÓN CONFIRMAR ASISTENCIA -->
+    <div class="confirm-section">
+        <button class="btn-confirm" id="openModalBtn">
+            <i class="fas fa-check-circle"></i> Confirmar asistencia
+        </button>
+        <p style="margin-top: 1.2rem; font-size: 0.85rem; color: #ac7b61;">
+            <i class="fas fa-heart"></i> Cuéntanos si nos acompañarás en este día tan especial
+        </p>
+    </div>
+
+    <!-- SECCIÓN COMPARTIR FOTOS CON GOOGLE FORMS -->
+    <div class="card">
+        <h2 class="section-title"><i class="fas fa-camera"></i> Comparte tus fotos del gran día</h2>
+        <p style="text-align: center; margin-bottom: 1rem;">
+            Haz clic en el formulario para subir tus fotos y videos. 
+            <strong>Recuerda que deberás iniciar sesión con tu cuenta de Google.</strong>
+        </p>
+        
+        <div class="iframe-wrapper">
+            <!-- FORMULARIO DE GOOGLE YA INTEGRADO -->
+            <iframe class="responsive-iframe" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfKLszbQaYvYue7k8PmV7dMliEkSq_9S_Fo1M9XJrAiqlsvVw/viewform?embedded=true" 
+                frameborder="0" marginheight="0" marginwidth="0">
+                Cargando…
+            </iframe>
+        </div>
+        <p style="font-size: 0.75rem; text-align: center; margin-top: 1rem; color:#b48a72;">
+            * Las fotos se guardarán de forma segura en el álbum de los novios. ¡Gracias por tu aporte!
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>Con amor, Martha & Ramiro  |  #MarthaRamiro2026  |  Por favor confirma tu asistencia
+    </div>
+</div>
+
+<!-- MODAL CONFIRMAR ASISTENCIA CON WHATSAPP -->
+<div id="modalOverlay" class="modal-overlay">
+    <div class="modal-container">
+        <span class="close-icon" id="closeModalIcon"><i class="fas fa-times-circle"></i></span>
+        <h3><i class="fab fa-whatsapp"></i> Confirma por WhatsApp</h3>
+        <p>Ingresa tus datos y te enviaremos la confirmación directamente a nuestro WhatsApp.</p>
+        <form id="confirmForm" class="modal-form">
+            <input type="text" id="guestName" placeholder="Tu nombre completo *" required>
+            <input type="tel" id="guestPhone" placeholder="Tu número de WhatsApp (opcional)">
+            <div class="modal-buttons">
+                <button type="submit" class="btn-modal-submit"><i class="fab fa-whatsapp"></i> Confirmar y enviar</button>
+                <button type="button" id="cancelModalBtn" class="btn-modal-cancel">Cancelar</button>
+            </div>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.7rem; color: #be8f74;">* Al confirmar, se abrirá WhatsApp con un mensaje listo para enviarnos. Si agregas tu número, podremos contactarte.</p>
+    </div>
+</div>
+
+<script>
+    // ========== CONFIGURACIÓN ==========
+    // 🔴 CAMBIA ESTE NÚMERO POR EL NÚMERO REAL DE MARTHA O RAMIRO (incluye código país, sin '+' ni espacios)
+    const WHATSAPP_NUMBER = '521234567890'; // Ejemplo: 521234567890 (México)
+    // ====================================
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeIcon = document.getElementById('closeModalIcon');
+    const cancelBtn = document.getElementById('cancelModalBtn');
+    const confirmForm = document.getElementById('confirmForm');
+
+    function openModal() {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeIcon) closeIcon.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) closeModal();
+    });
+
+    if (confirmForm) {
+        confirmForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('guestName').value.trim();
+            const telefono = document.getElementById('guestPhone').value.trim();
+            
+            if (nombre === "") {
+                alert("✨ Por favor, ingresa tu nombre para confirmar asistencia ✨");
+                return;
+            }
+
+            let mensaje = `Hola, soy ${nombre}. Confirmo mi asistencia a la boda de Martha y Ramiro. ¡Estaré allí!`;
+            if (telefono) {
+                mensaje += ` Mi número es ${telefono} para cualquier detalle.`;
+            }
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const urlWhatsApp = `https://wa.me/${7757518355}?text=${mensajeCodificado}`;
+            
+            window.open(urlWhatsApp, '_blank');
+            alert(`🎉 ¡Gracias ${nombre} por confirmar tu asistencia! 🎉\n\nSe abrirá WhatsApp para enviarnos tu mensaje. ¡Te esperamos! ❤️`);
+            
+            document.getElementById('guestName').value = '';
+            document.getElementById('guestPhone').value = '';
+            closeModal();
+        });
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+    });
+    function entrarInvitacion() {
+    const audio = document.getElementById("musica");
+    audio.play();
+
+    const pantalla = document.getElementById("pantalla-inicio");
+    pantalla.style.opacity = "0";
+    
+    setTimeout(() => {
+        pantalla.style.display = "none";
+    }, 500);
+}
+</script>
+</body>
+</html>
